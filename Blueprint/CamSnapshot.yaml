@@ -73,9 +73,9 @@ trigger:
 condition:
   condition: and
   conditions:
-    condition: state
-    entity_id: !input alarm_sensor
-    state: armed_away
+    - condition: state
+      entity_id: !input alarm_sensor
+      state: armed_away
 variables:
   motion_sensor: !input motion_sensor
   motion_sensor_name: '{{ states[motion_sensor].name }}'
