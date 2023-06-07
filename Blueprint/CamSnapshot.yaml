@@ -6,6 +6,14 @@ blueprint:
     '
   domain: automation
   input:
+    alarm_sensor:
+      name: Alarm sensor
+      description: The sensor that trigger if alarm is active
+      selector:
+        entity:
+          domain:
+          - binary_sensor
+          multiple: false
     motion_sensor:
       name: Motion sensor
       description: The sensor wich triggers the snapshot creation
@@ -67,7 +75,7 @@ condition:
   condition: and
     conditions:
       condition: state
-      entity_id: alarm_control_panel.ha_alarm
+      entity_id: !input alarm_sensor
       state: armed_away
 variables:
   motion_sensor: !input motion_sensor
